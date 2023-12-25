@@ -10,7 +10,6 @@ import com.github.crafterchen2.loadbalancer.util.Speed;
 public class BuildingPort extends Port {
 
     //Fields
-    private final ConnectionType io;
     private final Speed speed = new Speed(0);
     private Belt belt;
 
@@ -21,7 +20,6 @@ public class BuildingPort extends Port {
 
     public BuildingPort(ConnectionType io, Belt belt) {
         super(io);
-        this.io = io;
         setBelt(belt);
         switch (this.io) {
             case NONE -> speed.setCapacity(Capacity.zero);

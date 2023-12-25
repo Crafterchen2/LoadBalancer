@@ -10,7 +10,6 @@ public class SystemPort extends Port {
 
     //Fields
     private final Capacity capacity;
-    private final ConnectionType io;
 
     //Constructor
     public SystemPort(){
@@ -20,7 +19,6 @@ public class SystemPort extends Port {
     public SystemPort(ConnectionType io, Capacity capacity) {
         super(io);
         if (capacity == null) throw new NullPointerException("capacity must not be null");
-        this.io = io;
         this.capacity = switch (io) {
             case NONE -> Capacity.zero;
             case INPUT, OUTPUT -> capacity;
