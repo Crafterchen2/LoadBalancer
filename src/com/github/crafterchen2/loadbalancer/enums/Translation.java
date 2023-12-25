@@ -3,6 +3,7 @@ package com.github.crafterchen2.loadbalancer.enums;
 public enum Translation {
 
     //Entries
+    NO_BELT,
     BELT_MK_1,
     BELT_MK_2,
     BELT_MK_3,
@@ -18,6 +19,7 @@ public enum Translation {
     public static String translate(Translation key, Language lang){
         return switch (lang) {
             case ENGLISH -> switch (key) {
+                case NO_BELT -> "No Belt";
                 case BELT_MK_1 -> "Conveyor belt MK 1";
                 case BELT_MK_2 -> "Conveyor belt MK 2";
                 case BELT_MK_3 -> "Conveyor belt MK 3";
@@ -25,6 +27,7 @@ public enum Translation {
                 case BELT_MK_5 -> "Conveyor belt MK 5";
             };
             case GERMANY -> switch (key) {
+                case NO_BELT -> "Kein Fließband";
                 case BELT_MK_1 -> "Fließband MK 1";
                 case BELT_MK_2 -> "Fließband MK 2";
                 case BELT_MK_3 -> "Fließband MK 3";

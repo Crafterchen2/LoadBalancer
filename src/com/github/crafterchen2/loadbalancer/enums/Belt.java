@@ -7,7 +7,8 @@ import java.awt.image.BufferedImage;
 public enum Belt {
 
     //Entries
-    MK1(1,new Capacity(60,Unit.MIN),null,Translation.BELT_MK_1),
+    NO_BELT(0,Capacity.zero,null,Translation.NO_BELT),
+    MK1(1,new Capacity(60 ,Unit.MIN),null,Translation.BELT_MK_1),
     MK2(2,new Capacity(120,Unit.MIN),null,Translation.BELT_MK_2),
     MK3(3,new Capacity(270,Unit.MIN),null,Translation.BELT_MK_3),
     MK4(4,new Capacity(480,Unit.MIN),null,Translation.BELT_MK_4),
