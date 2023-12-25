@@ -16,10 +16,19 @@ public enum Direction {
     //Methods
     public Direction rotate(int rotateAmount){
         return switch (rotateAmount % 4) {
-            case 1, -3 -> next();
-            case 2, -2 -> opposite();
-            case 3, -1 -> previous();
-            default -> this;
+            case 1, -3 -> rotate(EAST);
+            case 2, -2 -> rotate(SOUTH);
+            case 3, -1 -> rotate(WEST);
+            default -> rotate(NORTH);
+        };
+    }
+
+    public Direction rotate(Direction northDirection) {
+        return switch (this) {
+            case NORTH -> this;
+            case EAST -> next();
+            case SOUTH -> opposite();
+            case WEST -> previous();
         };
     }
 
