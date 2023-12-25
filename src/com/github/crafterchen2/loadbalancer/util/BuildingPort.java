@@ -21,8 +21,8 @@ public class BuildingPort extends Port {
 
     public BuildingPort(ConnectionType io, Belt belt) {
         super(io);
-        setBelt(belt);
         this.io = io;
+        setBelt(belt);
         switch (this.io) {
             case NONE -> speed.setCapacity(Capacity.zero);
             case INPUT, OUTPUT -> speed.setCapacity(belt.capacity);
