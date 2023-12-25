@@ -17,7 +17,7 @@ public abstract class AbstractSpeed {
 
     //Methods
     public static void checkSpeed(double speed) {
-        if (speed <= 0.0) throw new IllegalArgumentException("Target speed must be bigger than 0.");
+        if (speed < 0.0) throw new IllegalArgumentException("Target speed must be at least 0.");
     }
 
     //Getter
