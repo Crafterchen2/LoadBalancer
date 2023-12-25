@@ -6,35 +6,56 @@ public class Speed extends AbstractSpeed{
 
     //Fields
     private double perSec;
+    private Capacity capacity = Capacity.infinite;
 
     //Constructor
-    private Speed(double perSec) {
+    public Speed(double perSec) {
         super(perSec);
         setPerSec(perSec);
     }
 
-    private Speed(double perUnit, Unit unit) {
+    public Speed(double perUnit, Unit unit) {
         super(perUnit, unit);
         set(perUnit, unit);
     }
 
+    public Speed(double perSec, Capacity capacity) {
+        super(perSec);
+        setCapacity(capacity);
+        setPerSec(perSec);
+    }
+
+    public Speed(double perUnit, Unit unit, Capacity capacity) {
+        super(perUnit, unit);
+        setCapacity(capacity);
+        set(perUnit, unit);
+    }
 
     //Methods
 
     //Getter
+    public Capacity getCapacity() {
+        return capacity;
+    }
 
     //Setter
-    private void set(double perDefaultUnit){
+    public void set(double perDefaultUnit){
         set(perDefaultUnit, Unit.selected);
     }
 
-    private void set(double perUnit, Unit unit){
+    public void set(double perUnit, Unit unit){
         checkSpeed(perUnit);
-        perSec = Math.max(1, (int) (perUnit * (1/unit.getFactor())));
+        perSec = Math.min(capacity.get(unit), Math.max(1, (int) (perUnit * (1/unit.getFactor()))));
     }
 
-    private void setPerSec(double perSec) {
+    public void setCapacity(Capacity capacity){
+        if (capacity == null) throw new NullPointerException("capacity must not be null.");
+        this.capacity = capacity;
+    }
+
+    public void setPerSec(double perSec) {
         checkSpeed(perSec);
+        if (perSec > capacity.getPerSec()) throw new IllegalArgumentException("perSec must not exceed the set capacity.");
         this.perSec = perSec;
     }
 
