@@ -16,7 +16,6 @@ public class LangSelector extends JComboBox<Language> {
             Language.selected = Language.values()[getSelectedIndex()];
             causeLangUpdate();
         });
-        System.out.println(getLayout());
         ListCellRenderer<? super Language> oldRenderer = getRenderer();
         setRenderer((list, value, index, isSelected, cellHasFocus) -> {
             Component c = oldRenderer.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
