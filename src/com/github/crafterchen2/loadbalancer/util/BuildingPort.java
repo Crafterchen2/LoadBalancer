@@ -2,10 +2,6 @@ package com.github.crafterchen2.loadbalancer.util;
 
 import com.github.crafterchen2.loadbalancer.enums.Belt;
 import com.github.crafterchen2.loadbalancer.enums.ConnectionType;
-import com.github.crafterchen2.loadbalancer.util.AbstractSpeed;
-import com.github.crafterchen2.loadbalancer.util.Capacity;
-import com.github.crafterchen2.loadbalancer.util.Port;
-import com.github.crafterchen2.loadbalancer.util.Speed;
 
 public class BuildingPort extends Port {
 
