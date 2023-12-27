@@ -32,6 +32,10 @@ public enum Language {
     //Setter
 
     //Overrides from
-    ////<class>
+    ////Enum
+    @Override
+    public String toString() {
+        return locale.getDisplayName(this.locale);
+    }
 
 }
