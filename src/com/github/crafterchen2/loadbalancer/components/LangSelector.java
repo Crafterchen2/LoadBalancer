@@ -8,10 +8,11 @@ import java.awt.*;
 public class LangSelector extends JComboBox<Language> {
 
     //Fields
+    private static final DefaultComboBoxModel<Language> languageModel = new DefaultComboBoxModel<>(Language.values());
 
     //Constructor
     public LangSelector() {
-        super(Language.values());
+        super(languageModel);
         addActionListener(e -> {
             Language.selected = Language.values()[getSelectedIndex()];
             causeLangUpdate();
