@@ -9,6 +9,13 @@ public enum Translation {
     BELT_MK_3,
     BELT_MK_4,
     BELT_MK_5,
+    SEC,
+    MIN,
+    HOUR,
+    DAY,
+    WEEK,
+    MONTH,
+    YEAR,
     ;
 
     //Fields
@@ -25,6 +32,13 @@ public enum Translation {
                 case BELT_MK_3 -> "Conveyor belt MK 3";
                 case BELT_MK_4 -> "Conveyor belt MK 4";
                 case BELT_MK_5 -> "Conveyor belt MK 5";
+                case SEC -> "Second";
+                case MIN -> "Minute";
+                case HOUR -> "Hour";
+                case DAY -> "Day";
+                case WEEK -> "Week";
+                case MONTH -> "Month";
+                case YEAR -> "Year";
             };
             case GERMANY -> switch (key) {
                 case NO_BELT -> "Kein Fließband";
@@ -33,6 +47,13 @@ public enum Translation {
                 case BELT_MK_3 -> "Fließband MK 3";
                 case BELT_MK_4 -> "Fließband MK 4";
                 case BELT_MK_5 -> "Fließband MK 5";
+                case SEC -> "Sekunde";
+                case MIN -> "Minute";
+                case HOUR -> "Stunde";
+                case DAY -> "Tag";
+                case WEEK -> "Woche";
+                case MONTH -> "Monat";
+                case YEAR -> "Jahr";
             };
         };
     }
