@@ -34,6 +34,10 @@ public enum Unit {
     //Setter
 
     //Overrides from
-    ////<class>
+    ////Enum
+    @Override
+    public String toString() {
+        return Translation.valueOf(super.toString()).translate();
+    }
 
 }
