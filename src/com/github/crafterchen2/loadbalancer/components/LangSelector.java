@@ -14,7 +14,6 @@ public class LangSelector extends JComboBox<Language> {
     public LangSelector() {
         super(languageModel);
         addActionListener(e -> {
-            Language.selected = Language.values()[getSelectedIndex()];
             causeLangUpdate();
         });
         ListCellRenderer<? super Language> oldRenderer = getRenderer();
@@ -34,13 +33,16 @@ public class LangSelector extends JComboBox<Language> {
 
     //Methods
     private void causeLangUpdate(){
-        Container lastParent = getParent();
-        Container nextParent = lastParent.getParent();
-        while (nextParent != null) {
-            lastParent = nextParent;
-            nextParent = lastParent.getParent();
+        if (getSelectedLanguage() != Language.selected) {
+            Language.selected = getSelectedLanguage();
+            Container lastParent = getParent();
+            Container nextParent = lastParent.getParent();
+            while (nextParent != null) {
+                lastParent = nextParent;
+                nextParent = lastParent.getParent();
+            }
+            lastParent.repaint();
         }
-        lastParent.repaint();
     }
 
     //Getter
