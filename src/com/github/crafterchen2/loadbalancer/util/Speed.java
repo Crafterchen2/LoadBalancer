@@ -32,6 +32,21 @@ public class Speed extends AbstractSpeed{
     }
 
     //Methods
+    public static Speed sub(Speed s1, Speed s2){
+        return new Speed(s1.perSec - s2.perSec, s1.capacity);
+    }
+
+    public Speed sub(Speed s2){
+        return sub(this,s2);
+    }
+
+    public static Speed add(Speed s1, Speed s2){
+        return new Speed(s1.perSec - s2.perSec, s1.capacity);
+    }
+
+    public Speed add(Speed s2){
+        return sub(this,s2);
+    }
 
     //Getter
     public Capacity getCapacity() {
@@ -45,7 +60,7 @@ public class Speed extends AbstractSpeed{
 
     public void set(double perUnit, Unit unit){
         checkSpeed(perUnit);
-        perSec = Math.min(capacity.get(unit), Math.max(1, (int) (perUnit * (1/unit.getFactor()))));
+        perSec = Math.min(capacity.getPerUnit(unit), Math.max(1, (int) (perUnit * (1/unit.getFactor()))));
     }
 
     public void setCapacity(Capacity capacity){

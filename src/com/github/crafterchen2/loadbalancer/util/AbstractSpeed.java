@@ -2,7 +2,7 @@ package com.github.crafterchen2.loadbalancer.util;
 
 import com.github.crafterchen2.loadbalancer.enums.Unit;
 
-public abstract class AbstractSpeed {
+public abstract class AbstractSpeed implements Comparable<AbstractSpeed> {
 
     //Fields
 
@@ -21,11 +21,11 @@ public abstract class AbstractSpeed {
     }
 
     //Getter
-    public double get(){
-        return get(Unit.selected);
+    public double getPerUnit(){
+        return getPerUnit(Unit.selected);
     }
 
-    public double get(Unit unit){
+    public double getPerUnit(Unit unit){
         return getPerSec() * unit.getFactor();
     }
 
@@ -34,6 +34,10 @@ public abstract class AbstractSpeed {
     //Setter
 
     //Overrides from
-    ////<class>
+    ////Comparable<AbstractSpeed>
+    @Override
+    public int compareTo(AbstractSpeed o) {
+        return Double.compare(getPerSec(), o.getPerSec());
+    }
 
 }
