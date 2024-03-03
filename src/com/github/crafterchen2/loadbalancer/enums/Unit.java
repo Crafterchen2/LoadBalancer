@@ -27,7 +27,11 @@ public enum Unit {
     //Methods
 
     //Getter
-    public double getFactor(){
+    public int getFactor(){
+        return factor;
+    }
+    
+    public double getInvertedFactor(){
         return 1.0 / (double) factor;
     }
 

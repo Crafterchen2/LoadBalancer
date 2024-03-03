@@ -18,7 +18,7 @@ public class Capacity extends AbstractSpeed {
 
     public Capacity(double perUnit, Unit unit) {
         super(perUnit, unit);
-        this.perSec = Math.max(1, (int) (perUnit * (1/unit.getFactor())));
+        this.perSec = Math.max(1, (int) (perUnit * unit.getFactor()));
     }
 
 

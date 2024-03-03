@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         debugLocale(Locale.GERMAN);
         debugLocale(Locale.GERMANY);
-        System.out.println(Unit.YEAR.getFactor());
+        System.out.println(Unit.YEAR.getInvertedFactor());
         for (int i = -8; i <= 8; i++) {
             System.out.println(i+": "+(i % 4));
         }

@@ -26,7 +26,7 @@ public abstract class AbstractSpeed implements Comparable<AbstractSpeed> {
     }
 
     public double getPerUnit(Unit unit){
-        return getPerSec() * unit.getFactor();
+        return getPerSec() * unit.getInvertedFactor();
     }
 
     public abstract double getPerSec();

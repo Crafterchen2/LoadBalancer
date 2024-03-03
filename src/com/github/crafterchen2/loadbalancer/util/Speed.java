@@ -60,7 +60,7 @@ public class Speed extends AbstractSpeed{
 
     public void set(double perUnit, Unit unit){
         checkSpeed(perUnit);
-        perSec = Math.min(capacity.getPerUnit(unit), Math.max(1, (int) (perUnit * (1/unit.getFactor()))));
+        perSec = Math.min(capacity.getPerUnit(unit), Math.max(1, (int) (perUnit * unit.getFactor())));
     }
 
     public void setCapacity(Capacity capacity){
