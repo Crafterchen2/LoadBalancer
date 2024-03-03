@@ -47,10 +47,5 @@ public class BuildingPort extends Port {
     public AbstractSpeed getSpeed() {
         return speed;
     }
-
-    @Override
-    public ConnectionType getConnectionType() {
-        return io;
-    }
-
+	
 }

@@ -18,7 +18,9 @@ public abstract class Port {
     //Getter
     public abstract AbstractSpeed getSpeed();
 
-    public abstract ConnectionType getConnectionType();
+    public ConnectionType getConnectionType(){
+        return io;
+    }
 
     //Setter
 

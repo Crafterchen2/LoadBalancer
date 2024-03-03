@@ -33,10 +33,5 @@ public class SystemPort extends Port {
     public AbstractSpeed getSpeed() {
         return capacity;
     }
-
-    @Override
-    public ConnectionType getConnectionType() {
-        return io;
-    }
-
+	
 }
