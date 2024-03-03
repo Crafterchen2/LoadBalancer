@@ -26,11 +26,15 @@ public enum Unit {
 
     //Methods
     public static double per(Unit unit, double perSec){
-        return unit.adjust(perSec);
+        return unit.secToUnit(perSec);
     }
     
-    public double adjust(double perSec){
+    public double secToUnit(double perSec){
         return perSec / (double) factor;
+    }
+    
+    public double unitToSec(double perUnit){
+        return perUnit * (double) factor;
     }
 
     //Getter
