@@ -25,6 +25,13 @@ public enum Unit {
     }
 
     //Methods
+    public static double per(Unit unit, int perSec){
+        return unit.adjust(perSec);
+    }
+    
+    public double adjust(int perSec){
+        return (double) perSec / (double) factor;
+    }
 
     //Getter
     public int getFactor(){
