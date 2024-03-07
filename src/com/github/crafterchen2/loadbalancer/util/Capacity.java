@@ -5,7 +5,7 @@ import com.github.crafterchen2.loadbalancer.enums.Unit;
 public class Capacity extends AbstractSpeed {
 
     //Fields
-    public static final Capacity zero = new Capacity(0);
+    public static final Capacity zero = new Capacity(0.0);
     public static final Capacity infinite = new Capacity(Double.MAX_VALUE);
 
     private final double perSec;
@@ -17,8 +17,8 @@ public class Capacity extends AbstractSpeed {
     }
 
     public Capacity(double perUnit, Unit unit) {
-        super(perUnit, unit);
-        this.perSec = Math.max(1, (int) (perUnit * unit.getFactor()));
+        super(perUnit);
+        this.perSec = unit.unitToSec(perUnit);
     }
 
 

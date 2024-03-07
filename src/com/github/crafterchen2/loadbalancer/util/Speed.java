@@ -15,8 +15,8 @@ public class Speed extends AbstractSpeed{
     }
 
     public Speed(double perUnit, Unit unit) {
-        super(perUnit, unit);
-        set(perUnit, unit);
+        super(perUnit);
+        setPerUnit(perUnit, unit);
     }
 
     public Speed(double perSec, Capacity capacity) {
@@ -26,26 +26,88 @@ public class Speed extends AbstractSpeed{
     }
 
     public Speed(double perUnit, Unit unit, Capacity capacity) {
-        super(perUnit, unit);
+        super(perUnit);
         setCapacity(capacity);
-        set(perUnit, unit);
+        setPerUnit(perUnit, unit);
     }
 
     //Methods
-    public static Speed sub(Speed s1, Speed s2){
-        return new Speed(s1.perSec - s2.perSec, s1.capacity);
+    public void sub(Speed other){
+        setPerSec(getPerSec() - other.getPerSec());
     }
-
-    public Speed sub(Speed s2){
-        return sub(this,s2);
+    
+    public static Speed sub(Capacity capacity, Speed s1, Speed s2){
+        return new Speed(s1.getPerSec() - s2.getPerSec(), capacity);
     }
-
-    public static Speed add(Speed s1, Speed s2){
-        return new Speed(s1.perSec - s2.perSec, s1.capacity);
+    
+    public static Speed sub(Capacity capacity, Speed s1, Speed s2, Speed s3){
+        return new Speed(s1.getPerSec() - s2.getPerSec() - s3.getPerSec(), capacity);
     }
-
-    public Speed add(Speed s2){
-        return sub(this,s2);
+    
+    public static Speed sub(Capacity capacity, Speed s1, Speed s2, Speed s3, Speed s4){
+        return new Speed(s1.getPerSec() - s2.getPerSec() - s3.getPerSec() - s4.getPerSec(), capacity);
+    }
+    
+    public static Speed sub(Capacity capacity, Speed... speeds){
+        return switch (speeds.length) {
+            case 0 -> null;
+            case 1 -> duplicate(speeds[0], capacity);
+            case 2 -> sub(capacity, speeds[0], speeds[1]);
+            case 3 -> sub(capacity, speeds[0], speeds[1], speeds[2]);
+            case 4 -> sub(capacity, speeds[0], speeds[1], speeds[2], speeds[3]);
+			default -> {
+                Speed rv = speeds[0];
+                for (int i = 1; i < speeds.length; i++) {
+                    rv.sub(speeds[i]);
+                }
+                yield rv;
+			}
+        };
+    }
+    
+    public void add(Speed other){
+        setPerSec(getPerSec() + other.getPerSec());
+    }
+    
+    public static Speed add(Capacity capacity, Speed s1, Speed s2){
+        return new Speed(s1.getPerSec() + s2.getPerSec(), capacity);
+    }
+    
+    public static Speed add(Capacity capacity, Speed s1, Speed s2, Speed s3){
+        return new Speed(s1.getPerSec() + s2.getPerSec() + s3.getPerSec(), capacity);
+    }
+    
+    public static Speed add(Capacity capacity, Speed s1, Speed s2, Speed s3, Speed s4){
+        return new Speed(s1.getPerSec() + s2.getPerSec() + s3.getPerSec() + s4.getPerSec(), capacity);
+    }
+    
+    public static Speed add(Capacity capacity, Speed... speeds){
+        return switch (speeds.length) {
+            case 0 -> null;
+            case 1 -> duplicate(speeds[0], capacity);
+            case 2 -> add(capacity, speeds[0], speeds[1]);
+            case 3 -> add(capacity, speeds[0], speeds[1], speeds[2]);
+            case 4 -> add(capacity, speeds[0], speeds[1], speeds[2], speeds[3]);
+            default -> {
+                Speed rv = speeds[0];
+                for (int i = 1; i < speeds.length; i++) {
+                    rv.add(speeds[i]);
+                }
+                yield rv;
+            }
+        };
+    }
+    
+    public static Speed duplicate(Speed toDuplicate){
+        return duplicate(toDuplicate, toDuplicate.capacity);
+    }
+    
+    public static Speed duplicate(Speed toDuplicate, Capacity capacity){
+        return new Speed(toDuplicate.getPerSec(), capacity);
+    }
+    
+    public Capacity toCapacity(){
+        return new Capacity(getPerSec());
     }
 
     //Getter
@@ -54,13 +116,14 @@ public class Speed extends AbstractSpeed{
     }
 
     //Setter
-    public void set(double perDefaultUnit){
-        set(perDefaultUnit, Unit.selected);
+    public void setPerUnit(double perDefaultUnit){
+        setPerUnit(perDefaultUnit, null);
     }
 
-    public void set(double perUnit, Unit unit){
-        checkSpeed(perUnit);
-        perSec = Math.min(capacity.getPerUnit(unit), Math.max(1, (int) (perUnit * unit.getFactor())));
+    public void setPerUnit(double perUnit, Unit unit){
+        if (unit == null) unit = Unit.selected;
+        checkPerUnit(perUnit, capacity, unit);
+        perSec = unit.unitToSec(perUnit);
     }
 
     public void setCapacity(Capacity capacity){
@@ -69,13 +132,12 @@ public class Speed extends AbstractSpeed{
     }
 
     public void setPerSec(double perSec) {
-        checkSpeed(perSec);
-        if (perSec > capacity.getPerSec()) throw new IllegalArgumentException("perSec must not exceed the set capacity.");
+        checkPerSec(perSec, capacity);
         this.perSec = perSec;
     }
 
     //Overrides from
-    ////Speed
+    ////AbstractSpeed
     @Override
     public double getPerSec() {
         return perSec;
