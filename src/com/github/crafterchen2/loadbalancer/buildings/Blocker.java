@@ -5,30 +5,25 @@ import com.github.crafterchen2.loadbalancer.util.BuildingPort;
 
 import java.util.HashMap;
 
-public class Blocker extends Building{
-
-    //Fields
-
-    //Constructor
-    protected Blocker(Direction northDirection) {
-        super(northDirection);
-    }
-
-    //Methods
-
-    //Getter
-
-    //Setter
-
-    //Overrides from
-    ////Building
-    @Override
-    public void updatePortSpeeds() {
-
-    }
-
-    @Override
-    public HashMap<Direction, BuildingPort> getRotatedConfig() {
-        return getConfig();
-    }
+//Classes {
+public class Blocker extends Building {
+	
+	//Constructor {
+	protected Blocker(Direction northDirection) {
+		super(northDirection);
+	}
+	//} Constructor
+	
+	//Overrides {
+	@Override
+	public void updatePortSpeeds() {
+	
+	}
+	
+	@Override
+	public HashMap<Direction, BuildingPort> getRotatedConfig() {
+		return getConfig();
+	}
+	//} Overrides
 }
+//} Classes

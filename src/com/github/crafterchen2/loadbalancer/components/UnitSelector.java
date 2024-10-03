@@ -4,25 +4,20 @@ import com.github.crafterchen2.loadbalancer.enums.Unit;
 
 import javax.swing.*;
 
+//Classes {
 public class UnitSelector extends JComboBox<Unit> {
-
-    //Fields
-
-    //Constructor
-    public UnitSelector() {
-        super(Unit.values());
-    }
-
-    //Methods
-
-    //Getter
-    public Unit getSelectedUnit(){
-        return Unit.values()[getSelectedIndex()];
-    }
-
-    //Setter
-
-    //Overrides from
-    ////<class>
-
+	
+	//Constructor {
+	public UnitSelector() {
+		super(Unit.values());
+	}
+	//} Constructor
+	
+	//Getter {
+	public Unit getSelectedUnit() {
+		return Unit.values()[getSelectedIndex()];
+	}
+	//} Getter
+	
 }
+//} Classes

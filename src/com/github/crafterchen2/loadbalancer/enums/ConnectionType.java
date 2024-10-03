@@ -1,24 +1,13 @@
 package com.github.crafterchen2.loadbalancer.enums;
 
+//Enums {
 public enum ConnectionType {
-
-    //Entries
-    NONE,
-    INPUT,
-    OUTPUT,
-    ;
-
-    //Fields
-
-    //Constructor
-
-    //Methods
-
-    //Getter
-
-    //Setter
-
-    //Overrides from
-    ////<class>
-
+	
+	NONE,
+	INPUT,
+	OUTPUT,
+	;
+	
+	
 }
+//} Enums

@@ -1,6 +1,7 @@
 package com.github.crafterchen2.loadbalancer;
 
 import com.github.crafterchen2.loadbalancer.components.LangSelector;
+import com.github.crafterchen2.loadbalancer.components.OldPlaceGrid;
 import com.github.crafterchen2.loadbalancer.components.UnitSelector;
 import com.github.crafterchen2.loadbalancer.enums.Unit;
 
@@ -42,6 +43,10 @@ public class Main {
         LangSelector ols = new LangSelector();
         ols.setBounds(50,160,300,25);
         frame.add(ols);
+        OldPlaceGrid oldPlaceGrid = new OldPlaceGrid();
+        oldPlaceGrid.setBounds(50,200,500,500);
+        frame.add(oldPlaceGrid);
+        frame.setResizable(true);
         frame.setVisible(true);
     }
 
@@ -50,7 +55,7 @@ public class Main {
     }
 
     private static void debugLocale(Locale l, Locale l2){
-        System.out.println("Debug for "+l.toString()+" and "+l2.toString());
+        System.out.println("Debug for "+l.toString()+" in "+l2.toString());
         System.out.println(":> getCountry()            "+l.getCountry());
         System.out.println(":> getDisplayCountry()     "+l.getDisplayCountry());
         System.out.println(":> getDisplayCountry(l2)   "+l.getDisplayCountry(l2));
